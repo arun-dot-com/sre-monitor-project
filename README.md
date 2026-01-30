@@ -23,43 +23,7 @@ To engineer a professional-grade monitoring ecosystem that automates the softwar
 
 ### **Architecture & Workflow**
 
-graph TD
-    %% Define Nodes
-    subgraph "Phase 1: Source Control"
-        A[GitHub Repository<br/>'sre-monitor-project']
-    end
-
-    subgraph "Phase 2: Automation Engine (Port 8081)"
-        B[Jenkins CI/CD Pipeline]
-        C{Jenkinsfile Logic}
-        D[Maven Build Tool]
-    end
-
-    subgraph "Phase 3: Application Runtime (Port 8080)"
-        E[Java Monitor App<br/>Target: .jar file]
-        F[HTTP Metrics Endpoint<br/>/metrics]
-    end
-
-    subgraph "Phase 4: Observability Stack"
-        G[Prometheus :9090<br/>Time-Series DB]
-        H[Grafana :3000<br/>SRE Dashboard]
-    end
-
-    %% Flow Connections
-    A -- "1. Hourly SCM Poll" --> B
-    B --> C
-    C -- "2. mvn clean package" --> D
-    D -- "3. Deploy & Run" --> E
-    E --> F
-    F -- "4. Pull/Scrape Metrics" --> G
-    G -- "5. Query (PromQL)" --> H
-
-    %% Styling
-    style A fill:#f3e5f5,stroke:#7b1fa2
-    style B fill:#e3f2fd,stroke:#1565c0
-    style E fill:#fff8e1,stroke:#fbc02d
-    style G fill:#fbe9e7,stroke:#d84315
-    style H fill:#fce4ec,stroke:#c2185b
+![SRE Architecture Diagram](sre-monitor.png)
 
 *   **Code Phase:** Developer pushes Java source code to GitHub.
     
