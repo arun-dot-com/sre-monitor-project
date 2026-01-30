@@ -31,33 +31,7 @@ public class MonitorApp {
         server.start();
     }
 
-    /*static class UIHandler implements HttpHandler {
-        @Override
-        public void handle(HttpExchange exchange) throws IOException {
-            StringBuilder response = new StringBuilder();
-            response.append("<html><body style='font-family: Arial, sans-serif; margin: 40px;'>")
-                    .append("<h2>Service Health Monitor</h2>")
-                    .append("<p>Enter a URL to monitor its uptime.</p>")
-                    .append("<form action='/add' method='get'>")
-                    .append("<input type='text' name='url' placeholder='https://google.com' style='padding: 5px; width: 300px;'> ")
-                    .append("<input type='submit' value='Add Service' style='padding: 5px 15px;'>")
-                    .append("</form>")
-                    .append("<h3>Currently Tracking:</h3><ul>");
-            
-            if (monitorTargets.isEmpty()) {
-                response.append("<li>No URLs added yet.</li>");
-            } else {
-                for (String url : monitorTargets.keySet()) {
-                    response.append("<li>").append(url).append("</li>");
-                }
-            }
-            
-            response.append("</ul><hr><p><a href='/metrics'>View Prometheus Metrics Raw Data</a></p>")
-                    .append("</body></html>");
-            
-            sendResponse(exchange, response.toString(), "text/html");
-        }
-    }*/
+   
    static class UIHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
